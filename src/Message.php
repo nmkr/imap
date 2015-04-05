@@ -346,7 +346,9 @@ class Message extends Message\Part
      */
     public function saveMessageToDisk($savePath)
     {
-        $res = imap_savebody($this->stream, $savePath, $this->messageNumber, \FT_UID);
+
+        $source = imap_fetchheader($this->stream, $this->messageNumber) . imap_body($this->stream, $this->messageNumber);
+        $res = file_put_contents($savePath, $source);
 
         return $res;
     }
