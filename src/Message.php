@@ -344,9 +344,9 @@ class Message extends Message\Part
      * @param $save_path
      * @return bool
      */
-    public function saveMessageToDisk($savePath)
+    public function saveMessageToDisk($savePath, $msgNumber)
     {
-        $res = imap_savebody($this->stream, $savePath, $this->messageNumber);
+        $res = imap_savebody($this->stream, $savePath, $msgNumber);
 
         return $res;
     }
